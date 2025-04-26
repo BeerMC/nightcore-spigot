@@ -31,12 +31,19 @@ public class ItemUtil {
     @NotNull
     public static String getItemName(@NotNull ItemStack item) {
         ItemMeta meta = item.getItemMeta();
-        if (meta != null) {
+        if (meta != null && meta.hasDisplayName()) {
             String name = getItemName(meta);
             if (name != null) return name;
         }
 
-        return LangAssets.get(item.getType());
+        return "<translation:" + (item.getType().isBlock() ? "block." : "item.") + item.getType().getKey().getNamespace() + "." + item.getType().getKey().getKey()+"></translation>";
+//        ItemMeta meta = item.getItemMeta();
+//        if (meta != null) {
+//            String name = getItemName(meta);
+//            if (name != null) return name;
+//        }
+//
+//        return LangAssets.get(item.getType());
     }
 
     @Nullable

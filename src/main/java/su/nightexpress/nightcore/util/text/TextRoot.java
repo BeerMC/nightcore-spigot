@@ -223,7 +223,7 @@ public class TextRoot {
                 //System.out.println("found tag = " + tag);
 
                 if (tag != null) {
-                    if (mode == Mode.PARSE) {
+                    if (mode == Mode.PARSE || tag instanceof TranslationTag) {
                         if (tagPool.isGoodTag(tag)) {
                             this.proceedTag(tag, closeTag, tagContent);
                         }
@@ -261,6 +261,7 @@ public class TextRoot {
             if (tagContent != null) {
                 // Create a new node exclusively for translation text.
                 TextNode node = this.currentGroup.createNode();
+
                 node.append(TagUtils.unquoted(tagContent));
                 node.setTranslation(true);
                 //this.currentGroup.createNode().setTranslation(TagUtils.unquoted(tagContent));

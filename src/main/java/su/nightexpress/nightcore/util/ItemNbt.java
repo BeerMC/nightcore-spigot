@@ -276,7 +276,12 @@ public class ItemNbt {
         }
         catch (IllegalArgumentException exception) {
             try {
-                itemStack = ItemNbt.decompress(value);
+//                itemStack = ItemNbt.decompress(value);
+                if(Version.isAtLeast(Version.MC_1_21) && value.contains("{")){
+                    itemStack = ItemNbt.fromTagString(value);
+                }else{
+                    itemStack = ItemNbt.decompress(value);
+                }
             }
             catch (NumberFormatException ignored) {
 

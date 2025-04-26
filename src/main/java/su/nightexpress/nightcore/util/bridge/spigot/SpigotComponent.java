@@ -180,13 +180,15 @@ public class SpigotComponent implements NightComponent {
             }
             case SHOW_ITEM -> {
                 ItemStack itemStack = ItemNbt.getHoverEventItem(value);
-
                 String key = BukkitThing.toString(itemStack.getType());
                 ItemMeta meta = itemStack.getItemMeta();
                 String nbt = meta == null ? "{}" : meta.getAsString();
-
                 Item item = new Item(key, itemStack.getAmount(), ItemTag.ofNbt(nbt));
-                this.parent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_ITEM, item));
+                try{
+                    this.parent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_ITEM, item));
+                }catch (Exception ignored){
+
+                }
             }
         }
     }

@@ -40,8 +40,6 @@ public interface Software {
 
     @NotNull InventoryView createView(@NotNull MenuType menuType, @NotNull String title, @NotNull Player player);
 
-
-
     void sendTitles(@NotNull Player player, @NotNull String title, @NotNull String subtitle, int fadeIn, int stay, int fadeOut);
 
 
