@@ -225,7 +225,7 @@ public class TextRoot {
                 //System.out.println("found tag = " + tag);
 
                 if (tag != null) {
-                    if (mode == Mode.PARSE) {
+                    if (mode == Mode.PARSE || tag instanceof TranslationTag) {
                         if (tagPool.isGoodTag(tag)) {
                             this.proceedTag(tag, closeTag, tagContent);
                         }

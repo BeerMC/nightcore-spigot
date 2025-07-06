@@ -221,7 +221,11 @@ public class SpigotComponent implements NightComponent {
         String key = BukkitThing.getAsString(itemStack.getType());
 
         Item item = new Item(key, itemStack.getAmount(), ItemTag.ofNbt(nbt));
-        this.parent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_ITEM, item));
+
+        try{
+            this.parent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_ITEM, item));
+        }catch (Exception ignored) {}
+
     }
 
     @Override
